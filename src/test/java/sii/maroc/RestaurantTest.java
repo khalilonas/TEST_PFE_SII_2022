@@ -31,8 +31,14 @@ public class RestaurantTest {
      */
 // Allowed modification zone starts here
     @Test
-    public void shouldFailWhenOutOfStock(){
-        Assert.fail();
+    public void shouldFailWhenOutOfStock() throws UnavailableDishException {
+    	Restaurant restaurant = new Restaurant("6 balls Mozzarella", "20 tomatoes", "olive oil", "pepper");
+		Ticket ticket = restaurant.order("5 Tomato Mozzarella Salad");
+		Meal meal = restaurant.retrieve(ticket);
+		boolean value = restaurant.outOfStocksIngredients( restaurant, meal);
+    	if(value){
+            Assert.fail();
+    	}
     }
 // Allowed modification zone ends here
 

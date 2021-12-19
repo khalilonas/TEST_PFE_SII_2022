@@ -2,7 +2,7 @@ package sii.maroc;
 
 import java.util.ArrayList;
 
-public class Restaurant {
+public class Restaurant implements IRestaurant {
 	public String ballOfMozzarella;
 	public String tomatoes;
 	public String oliveOil;
@@ -36,6 +36,37 @@ public class Restaurant {
 		meal.commandToMeal = listOfMeal;
 		return meal;
 	}
+	
+	public String getBallOfMozzarella() {
+		return ballOfMozzarella;
+	}
+
+	public void setBallOfMozzarella(String ballOfMozzarella) {
+		this.ballOfMozzarella = ballOfMozzarella;
+	}
+
+	public String getTomatoes() {
+		return tomatoes;
+	}
+
+	public void setTomatoes(String tomatoes) {
+		this.tomatoes = tomatoes;
+	}
+
+	public boolean outOfStocksIngredients(Restaurant rest, Meal meal) throws UnavailableDishException{
+			String stocksMozarella = rest.getBallOfMozzarella();
+			String[] array = stocksMozarella.split(" "); 
+			int number = Integer.parseInt(array[0]);
+			String tomatoes = rest.getTomatoes();
+			String[] array2 = tomatoes.split(" "); 
+			int number2 = Integer.parseInt(array[0]);
+			if(meal.servedDishes() > number || meal.servedDishes() > number2/2 ) {
+				 throw new UnavailableDishException("out of stocks");
+			}
+            return false;
+	}
+
+	
 
 
 	

@@ -2,7 +2,7 @@ package sii.maroc;
 
 import java.util.ArrayList;
 
-public class Ticket {
+public class Ticket implements ITicket{
 	
 	public  ArrayList<String> list;
 
